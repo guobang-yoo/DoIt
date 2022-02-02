@@ -10,7 +10,7 @@ telegram:
   Prefix: https://t.me/
   Title: Telegram
   Icon:
-    Class: fab fa-telegram-plane fa-fw
+    Class: fab fa-telegram fa-fw
 
 email:
   Weight: 3
