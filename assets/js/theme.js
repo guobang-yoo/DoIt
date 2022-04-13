@@ -1,8 +1,18 @@
 /* eslint-disable no-new */
 /* eslint-disable no-undef */
-// import { autocomplete } from '@algolia/autocomplete-js'
 import * as topbar from 'topbar'
+import lazySizes from 'lazysizes'
+// import ClipboardJS from 'clipboard'
 const Tablesort = require('tablesort')
+// const autocomplete = require('autocomplete.js')
+
+function escape (unsafe) {
+  return unsafe.replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;')
+}
 
 function forEach (elements, handler) {
   elements = elements || []
@@ -78,17 +88,28 @@ function initMenuMobile () {
 }
 
 /**
+ * Set the color theme
+ * @param {string} theme
+ */
+function setColorTheme (theme) {
+  // set body attribute for CSS selector
+  document.body.setAttribute('theme', theme)
+  // set root color scheme
+  // https://developer.mozilla.org/en-US/docs/Web/CSS/color-scheme
+  document.documentElement.style.setProperty('color-scheme', theme === 'light' ? 'light' : 'dark')
+  // save to local storage
+  window.localStorage && localStorage.setItem('theme', theme)
+  // set window.isDark for js
+  window.isDark = !(theme === 'light')
+}
+
+/**
  * Initialize the switch theme button.
  */
 function initSwitchTheme () {
   Array.from(document.getElementsByClassName('theme-switch')).forEach(themeSwitch => {
     themeSwitch.addEventListener('click', () => {
       const currentTheme = document.body.getAttribute('theme')
-      function setColorTheme (theme) {
-        document.body.setAttribute('theme', theme)
-        window.localStorage && localStorage.setItem('theme', theme)
-        window.isDark = !(theme === 'light')
-      }
       if (currentTheme === 'dark') {
         setColorTheme('black')
       } else if (currentTheme === 'black') {
@@ -121,15 +142,12 @@ function initSelectTheme () {
       const theme = themeSelect.value
       window.localStorage && localStorage.setItem('theme', theme)
       if (theme !== 'auto') {
-        window.isDark = !(theme === 'light')
-        document.body.setAttribute('theme', theme)
+        setColorTheme(theme)
       } else {
         if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-          document.body.setAttribute('theme', 'dark')
-          window.isDark = true
+          setColorTheme('dark')
         } else {
-          document.body.setAttribute('theme', 'white')
-          window.isDark = false
+          setColorTheme('light')
         }
       }
       for (const event of window.switchThemeEventSet) event()
@@ -411,8 +429,8 @@ function initSearch () {
         }
       },
       templates: {
-        suggestion: ({ title, date, context }) => `<div><span class="suggestion-title">${title}</span><span class="suggestion-date">${date}</span></div><div class="suggestion-context">${context}</div>`,
-        empty: ({ query }) => `<div class="search-empty">${searchConfig.noResultsFound}: <span class="search-query">"${query}"</span></div>`,
+        suggestion: ({ title, date, context }) => `<div><span class="suggestion-title">${title}</span><span class="suggestion-date">${date}</span></div><div class="suggestion-context">${escape(context)}</div>`,
+        empty: ({ query }) => `<div class="search-empty">${searchConfig.noResultsFound}: <span class="search-query">"${escape(query)}"</span></div>`,
         footer: () => {
           const { searchType, icon, href } = searchConfig.type === 'algolia'
             ? {
@@ -840,17 +858,10 @@ function init () {
   onScroll()
   onResize()
   onClickMask()
+  lazySizes.init()
 }
 
-const themeInit = () => {
-  init()
-}
-
-if (document.readyState !== 'loading') {
-  themeInit()
-} else {
-  document.addEventListener('DOMContentLoaded', themeInit, false)
-}
+init()
 
 new Pjax({
   selectors: [
@@ -864,7 +875,19 @@ new Pjax({
 })
 
 document.addEventListener('pjax:success', function () {
-  themeInit()
+  init()
+  // refresh analytics
+  if (typeof gtag === 'function') {
+    gtag('event', 'pageview', { page_location: window.location.href })
+  }
+
+  if (typeof fathom === 'function') {
+    fathom('trackPageview')
+  }
+
+  if (typeof _hmt !== 'undefined' && typeof _hmt.push === 'function') {
+    _hmt.push(['_trackPageview', window.location.pathname])
+  }
 })
 
 document.addEventListener('pjax:send', function () {
