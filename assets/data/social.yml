@@ -12,8 +12,6 @@ telegram:
   Icon:
     Class: fab fa-telegram fa-fw
 
-<<<<<<< HEAD
-=======
 # 007: Medium
 medium:
   Weight: 7
@@ -525,7 +523,6 @@ diaspora:
     Simpleicons: diaspora
 
 # 071: Email
->>>>>>> 79a6f762d2b6bdad745f894b2f77ec5aecb18921
 email:
   Weight: 3
   Template: mailto:%v
