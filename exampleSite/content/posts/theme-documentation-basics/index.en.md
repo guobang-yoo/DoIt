@@ -165,6 +165,7 @@ it is highly recommended that you add `--disableFastRender` parameter to `hugo s
 ```bash
 hugo serve --disableFastRender
 ```
+
 {{< /admonition >}}
 
 ### Build the Website
@@ -193,7 +194,7 @@ Please open the code block below to view the complete sample configuration :(far
 ```toml
 [params]
   # {{< version 0.2.0 changed >}} DoIt theme version
-  version = "0.2.X"
+  version = "0.3.X"
   # website title
   title = "My New Hugo Site"
   # site description
@@ -213,6 +214,8 @@ Please open the code block below to view the complete sample configuration :(far
   images = ["/logo.png"]
   # {{< version 0.2.11 >}} enable PWA support
   enablePWA = false
+  # [Experimental] cache remote images, more info: https://github.com/HEIGE-PCloud/DoIt/pull/860#issue-1574342372
+  cacheRemoteImages = false
   # {{< version 0.2.0 >}} App icon config
   # {{< version 0.2.14 >}} License information
   license = '<a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a>'
@@ -231,7 +234,7 @@ Please open the code block below to view the complete sample configuration :(far
   # {{< version 0.2.0 >}} Search config
   [params.search]
     enable = true
-    # type of search engine ("lunr", "algolia", "fuse")
+    # type of search engine ("algolia", "fuse")
     type = "fuse"
     # max index length of the chunked content
     contentLength = 4000
@@ -767,6 +770,7 @@ Please open the code block below to view the complete sample configuration :(far
     [params.analytics.umami]
       data_website_id = ""
       src = ""
+      data_host_url = ""
       data_domains = ""
     # {{< version 0.2.13 >}} Plausible Analytics
     [params.analytics.plausible]
@@ -1012,21 +1016,21 @@ In `assets/css/_custom.scss`, you can add some css style code to customize the s
 
 {{< version 0.2.10 changed >}}
 
-| Language             | Hugo Code | HTML `lang` Attribute | Theme Docs                    | Lunr.js Support               |
-|:-------------------- |:---------:|:---------------------:|:-----------------------------:|:-----------------------------:|
-| English              | `en`      | `en`                  | :(far fa-check-square fa-fw): | :(far fa-check-square fa-fw): |
-| Simplified Chinese   | `zh-cn`   | `zh-CN`               | :(far fa-check-square fa-fw): | :(far fa-check-square fa-fw): |
-| French               | `fr`      | `fr`                  | :(far fa-square fa-fw):       | :(far fa-check-square fa-fw): |
-| Polish               | `pl`      | `pl`                  | :(far fa-square fa-fw):       | :(far fa-square fa-fw):       |
-| Brazilian Portuguese | `pt-br`   | `pt-BR`               | :(far fa-square fa-fw):       | :(far fa-check-square fa-fw): |
-| Italian              | `it`      | `it`                  | :(far fa-square fa-fw):       | :(far fa-check-square fa-fw): |
-| Spanish              | `es`      | `es`                  | :(far fa-square fa-fw):       | :(far fa-check-square fa-fw): |
-| German               | `de`      | `de`                  | :(far fa-square fa-fw):       | :(far fa-check-square fa-fw): |
-| German               | `de`      | `de`                  | :(far fa-square fa-fw):       | :(far fa-check-square fa-fw): |
-| Serbian              | `sr`      | `sr`                  | :(far fa-square fa-fw):       | :(far fa-square fa-fw):       |
-| Russian              | `ru`      | `ru`                  | :(far fa-square fa-fw):       | :(far fa-check-square fa-fw): |
-| Romanian             | `ro`      | `ro`                  | :(far fa-square fa-fw):       | :(far fa-check-square fa-fw): |
-| Vietnamese           | `vi`      | `vi`                  | :(far fa-square fa-fw):       | :(far fa-check-square fa-fw): |
+| Language             | Hugo Code | HTML `lang` Attribute | Theme Docs                    |
+|:-------------------- |:---------:|:---------------------:|:-----------------------------:|
+| English              | `en`      | `en`                  | :(far fa-check-square fa-fw): |
+| Simplified Chinese   | `zh-cn`   | `zh-CN`               | :(far fa-check-square fa-fw): |
+| French               | `fr`      | `fr`                  | :(far fa-square fa-fw):       |
+| Polish               | `pl`      | `pl`                  | :(far fa-square fa-fw):       |
+| Brazilian Portuguese | `pt-br`   | `pt-BR`               | :(far fa-square fa-fw):       |
+| Italian              | `it`      | `it`                  | :(far fa-square fa-fw):       |
+| Spanish              | `es`      | `es`                  | :(far fa-square fa-fw):       |
+| German               | `de`      | `de`                  | :(far fa-square fa-fw):       |
+| German               | `de`      | `de`                  | :(far fa-square fa-fw):       |
+| Serbian              | `sr`      | `sr`                  | :(far fa-square fa-fw):       |
+| Russian              | `ru`      | `ru`                  | :(far fa-square fa-fw):       |
+| Romanian             | `ro`      | `ro`                  | :(far fa-square fa-fw):       |
+| Vietnamese           | `vi`      | `vi`                  | :(far fa-square fa-fw):       |
 
 ### Basic Configuration
 
@@ -1130,7 +1134,7 @@ By the way, as these translations could be used by other people, please take the
 
 {{< version 0.2.0 >}}
 
-Based on [Lunr.js](https://lunrjs.com/) or [algolia](https://www.algolia.com/), searching is supported in **DoIt** theme.
+Based on [algolia](https://www.algolia.com/), searching is supported in **DoIt** theme.
 
 ### Output Configuration
 
@@ -1150,7 +1154,7 @@ Here is the search configuration in your [site configuration](#site-configuratio
 ```toml
 [params.search]
   enable = true
-  # type of search engine ("lunr", "algolia", "fuse")
+  # type of search engine ("algolia", "fuse")
   type = "fuse"
   # max index length of the chunked content
   contentLength = 4000
@@ -1185,8 +1189,6 @@ Here is the search configuration in your [site configuration](#site-configuratio
 The following is a comparison of two search engines:
 
 * `fuse`: simple, no need to synchronize `index.json`, no limit for `contentLength`, high performance
-* `lunr`: simple, no need to synchronize `index.json`, no limit for `contentLength`,
-  but high bandwidth and low performance (Especially for Chinese which needs a large segmentit library)
 * `algolia`: high performance and low bandwidth, but need to synchronize `index.json` and limit for `contentLength`
 
 {{< version 0.2.3 >}} The content of the post is separated by `h2` and `h3` HTML tag to improve query performance and basically implement full-text search.

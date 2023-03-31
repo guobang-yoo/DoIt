@@ -3,7 +3,7 @@
     "dependencies": [
         {
             "name": "twikoo",
-            "version": "1.6.7",
+            "version": "1.6.11",
             "files": [
                 {
                     "remote": "dist/twikoo.all.min.js",
@@ -13,7 +13,7 @@
         },
         {
             "name": "@waline/client",
-            "version": "2.7.1",
+            "version": "2.14.9",
             "files": [
                 {
                     "remote": "dist/waline.css",
@@ -26,18 +26,8 @@
             ]
         },
         {
-            "name": "mermaid",
-            "version": "9.1.6",
-            "files": [
-                {
-                    "remote": "dist/mermaid.min.js",
-                    "local": "mermaid/mermaid.min.js"
-                }
-            ]
-        },
-        {
             "name": "katex",
-            "version": "0.16.2",
+            "version": "0.16.4",
             "files": [
                 {
                     "remote": "dist/katex.min.js",
@@ -58,6 +48,20 @@
                 {
                     "remote": "dist/contrib/mhchem.min.js",
                     "local": "katex/mhchem.min.js"
+                }
+            ]
+        },
+        {
+            "name": "echarts",
+            "version": "5.4.2",
+            "files": [
+                {
+                    "remote": "dist/echarts.min.js",
+                    "local": "echarts/echarts.min.js"
+                },
+                {
+                    "remote": "theme/macarons.min.js",
+                    "local": "echarts/macarons.min.js"
                 }
             ]
         }
