@@ -3,17 +3,21 @@
     "dependencies": [
         {
             "name": "twikoo",
-            "version": "1.6.11",
+            "version": "1.6.16",
             "files": [
                 {
                     "remote": "dist/twikoo.all.min.js",
                     "local": "twikoo/twikoo.all.min.js"
+                },
+                {
+                    "remote": "dist/twikoo.min.js",
+                    "local": "twikoo/twikoo.min.js"
                 }
             ]
         },
         {
             "name": "@waline/client",
-            "version": "2.14.9",
+            "version": "2.15.1",
             "files": [
                 {
                     "remote": "dist/waline.css",
@@ -27,7 +31,7 @@
         },
         {
             "name": "katex",
-            "version": "0.16.4",
+            "version": "0.16.7",
             "files": [
                 {
                     "remote": "dist/katex.min.js",

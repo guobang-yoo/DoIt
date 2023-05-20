@@ -74,7 +74,7 @@ cacheRemoteImages = false
   # Hosted on (HTML format is supported)
   # 托管服务信息 (支持 HTML 格式)
   # <a title="Github Pages" href="https://docs.github.com/en/pages/" target="_blank" rel="noopener noreffer">GitHub Pages</a>
-  hostedOn = '' 
+  hostedOn = ''
   # whether to show copyright info
   # 是否显示版权信息
   copyright = true
@@ -169,9 +169,6 @@ cacheRemoteImages = false
   # whether to show the full text content in RSS
   # 是否在 RSS 中显示全文内容
   rssFullText = false
-  # Page style ("normal", "wide")
-  # 页面样式 ("normal", "wide")
-  pageStyle = "normal"
   # whether to enable series navigation
   # 是否使用系列导航
   seriesNavigation = true
@@ -392,9 +389,9 @@ cacheRemoteImages = false
     # Utterances comment config (https://utteranc.es/)
     # Utterances comment 评论系统设置 (https://utteranc.es/)
     [page.comment.utterances]
-      enable = false
+      enable = true
       # owner/repo
-      repo = ""
+      repo = "Hugo-DoIt/utterances-comments"
       issueTerm = "pathname"
       label = ""
       lightTheme = "github-light"
@@ -402,10 +399,11 @@ cacheRemoteImages = false
     # Twikoo comment config (https://twikoo.js.org/)
     # Twikoo comment 评论系统设置 (https://twikoo.js.org/)
     [page.comment.twikoo]
-      enable = true
+      enable = false
       envId = "https://twikoo-comments-doit.vercel.app/"
       region = ""
       path = ""
+      cloudbase = true # boolean : true / false. # 是否部署在腾讯云 CloudBase
       visitor = true
       commentCount = true
     # Vssue comment config (https://vssue.js.org//)

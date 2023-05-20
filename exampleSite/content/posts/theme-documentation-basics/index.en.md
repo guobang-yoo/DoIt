@@ -294,7 +294,7 @@ Please open the code block below to view the complete sample configuration :(far
     hugo = true
     # {{< version 0.2.14 >}} Hosted on (HTML format is supported)
     # <a title="Github Pages" href="https://docs.github.com/en/pages/" target="_blank" rel="noopener noreffer">GitHub Pages</a>
-    hostedOn = '' 
+    hostedOn = ''
     # {{< version 0.2.0 >}} whether to show copyright info
     copyright = true
     # {{< version 0.2.0 >}} whether to show the author
@@ -467,8 +467,6 @@ Please open the code block below to view the complete sample configuration :(far
     # "https://github.com/user/repo/issues/new?title=[bug]%20{title}&body=|Field|Value|%0A|-|-|%0A|Title|{title}|%0A|Url|{url}|%0A|Filename|https://github.com/user/repo/blob/main/{path}|"
     # {{< version 0.2.4 >}} whether to show the full text content in RSS
     rssFullText = false
-    # {{< version 0.2.11 >}} page layout style ("normal", "wide")
-    pageStyle = "normal"
     # {{< version 0.2.13 >}} whether to enable series navigation
     seriesNavigation = true
     # {{< version 0.2.13 >}} outdated article reminder config
@@ -645,6 +643,7 @@ Please open the code block below to view the complete sample configuration :(far
         envId = ""
         region = ""
         path = ""
+        cloudbase = true # boolean : true / false. #If you deploy your Twikoo on CloudBase, set it to true.
         visitor = true
         commentCount = true
       # {{< version 0.2.12 >}} {{< link "https://vssue.js.org/" "Vssue" >}} comment config
@@ -1017,7 +1016,7 @@ In `assets/css/_custom.scss`, you can add some css style code to customize the s
 {{< version 0.2.10 changed >}}
 
 | Language             | Hugo Code | HTML `lang` Attribute | Theme Docs                    |
-|:-------------------- |:---------:|:---------------------:|:-----------------------------:|
+|:---------------------|:---------:|:---------------------:|:-----------------------------:|
 | English              | `en`      | `en`                  | :(far fa-check-square fa-fw): |
 | Simplified Chinese   | `zh-cn`   | `zh-CN`               | :(far fa-check-square fa-fw): |
 | French               | `fr`      | `fr`                  | :(far fa-square fa-fw):       |
@@ -1031,6 +1030,17 @@ In `assets/css/_custom.scss`, you can add some css style code to customize the s
 | Russian              | `ru`      | `ru`                  | :(far fa-square fa-fw):       |
 | Romanian             | `ro`      | `ro`                  | :(far fa-square fa-fw):       |
 | Vietnamese           | `vi`      | `vi`                  | :(far fa-square fa-fw):       |
+| Arabic               | `ar`      | `ar`                  | :(far fa-square fa-fw):       |
+| Catalan              | `ca`      | `ca`                  | :(far fa-square fa-fw):       |
+| Hindi                | `hi`      | `hi`                  | :(far fa-square fa-fw):       |
+| Indonesian           | `id`      | `id`                  | :(far fa-square fa-fw):       |
+| Telugu               | `te`      | `te`                  | :(far fa-square fa-fw):       |
+| Thai                 | `th`      | `th`                  | :(far fa-square fa-fw):       |
+| Turkish              | `tr`      | `tr`                  | :(far fa-square fa-fw):       |
+| Ukrainian            | `uk`      | `uk`                  | :(far fa-square fa-fw):       |
+| Traditional Chinese  | `zh-tw`   | `zh-tw`               | :(far fa-square fa-fw):       |
+
+
 
 ### Basic Configuration
 
