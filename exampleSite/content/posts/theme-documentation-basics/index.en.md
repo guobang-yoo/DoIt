@@ -343,6 +343,8 @@ Please open the code block below to view the complete sample configuration :(far
       # Place your avatar file under static or assets directory
       # The filepath is relative to the static or assets directory
       avatarURL = "/images/avatar.webp"
+      # URL the avatar links to
+      avatarLinkURL = ""
       # {{< version 0.2.7 changed >}} title shown in home page (HTML format is supported)
       title = ""
       # subtitle shown in home page
@@ -469,6 +471,12 @@ Please open the code block below to view the complete sample configuration :(far
     rssFullText = false
     # {{< version 0.2.13 >}} whether to enable series navigation
     seriesNavigation = true
+    # whether to enable last modified time
+    enableLastMod = true
+    # whether to enable word count
+    enableWordCount = true
+    # whether to enable reading time estimation
+    enableReadingTime = true
     # {{< version 0.2.13 >}} outdated article reminder config
     [params.page.outdatedArticleReminder]
       enable = false
@@ -553,6 +561,7 @@ Please open the code block below to view the complete sample configuration :(far
       Skype = false
       Trello = false
       Mix = false
+      Mastodon = false
     # {{< version 0.2.0 changed >}} Comment config
     [params.page.comment]
       enable = true
@@ -677,6 +686,16 @@ Please open the code block below to view the complete sample configuration :(far
         lightTheme = "light"
         darkTheme = "dark"
         dataLang = "en"
+      # {{< link "https://artalk.js.org/" "artalk" >}} comment config
+      [page.comment.artalk]
+        enable = false
+        server = ""
+        site = ""
+        lite = false
+        katex = false
+        lightbox = false
+        pageview = true
+        commentCount = true
     # {{< version 0.2.7 >}} Third-party library config
     [params.page.library]
       [params.page.library.css]
@@ -912,6 +931,8 @@ You could enable these features with `hugo serve -e production`.
   gravatarEmail = ""
   # URL of avatar shown in home page
   avatarURL = "/images/avatar.webp"
+  # URL the avatar links to
+  avatarLinkURL = ""
 ````
 
 You can sign up and configure your avatar at [Gravatar](https://en.gravatar.com), the website will automatically obtain and set your avatar through the email address filled in `gravatarEmail`.

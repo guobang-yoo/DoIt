@@ -347,6 +347,8 @@ hugo
       # 将你的头像文件放置于 static 或者 assets 目录下
       # 文件路径是相对于 static 或者 assets 目录的
       avatarURL = "/images/avatar.webp"
+      # 头像的链接指向的 URL
+      avatarLinkURL = ""
       # {{< version 0.2.7 changed >}} 主页显示的网站标题 (支持 HTML 格式)
       title = ""
       # 主页显示的网站副标题
@@ -473,6 +475,12 @@ hugo
     rssFullText = false
     # {{< version 0.2.13 >}} 是否在文章开头显示系列导航
     seriesNavigation = true
+    # 是否启用最后修改时间
+    enableLastMod = true
+    # 是否启用字数统计
+    enableWordCount = true
+    # 是否启用阅读时间估计
+    enableReadingTime = true
     # {{< version 0.2.13 >}} 过时文章提示
     [params.page.outdatedArticleReminder]
       enable = true
@@ -557,6 +565,7 @@ hugo
       Skype = false
       Trello = false
       Mix = false
+      Mastodon = false
     # {{< version 0.2.0 changed >}} 评论系统设置
     [params.page.comment]
       enable = true
@@ -681,6 +690,16 @@ hugo
         lightTheme = "light"
         darkTheme = "dark"
         dataLang = "zh-CN"
+      # {{< link "https://artalk.js.org/" "artalk" >}} 评论系统设置
+      [page.comment.artalk]
+        enable = false
+        server = ""
+        site = ""
+        lite = false
+        katex = false
+        lightbox = false
+        pageview = true
+        commentCount = true
     # {{< version 0.2.7 >}} 第三方库配置
     [params.page.library]
       [params.page.library.css]
@@ -916,6 +935,8 @@ series = "series"
   gravatarEmail = ""
   # 主页显示头像的 URL
   avatarURL = "/images/avatar.webp"
+  # 头像的链接指向的 URL
+  avatarLinkURL = ""
 ````
 
 你可以在 [Gravatar](https://cn.gravatar.com) 注册并设置自己的头像, 网站会通过`gravatarEmail`中填写的邮箱自动获取并设置你的头像.
