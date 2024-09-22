@@ -34,6 +34,7 @@
             {{- range .Paginator.Pages -}}
                 {{- .Render "summary" -}}
             {{- end -}}
+            {{- partial "paginator.html" . -}}
         {{- end -}}
     </div>
 {{- end -}}

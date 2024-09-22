@@ -716,17 +716,3 @@ rss:
     Fontawesome:
       Style: solid
       Icon: rss
-
-bilibili:
-  Weight: 4
-  Prefix: https://space.bilibili.com/
-  Title: bilibili
-  Icon:
-    Src: svg/icons/bilibili.svg
-
-steam:
-  Weight: 5
-  Prefix: https://steamcommunity.com/profiles/
-  Title: Steam
-  Icon:
-    Class: fab fa-steam fa-fw
